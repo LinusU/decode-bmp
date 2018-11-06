@@ -1,0 +1,25 @@
+{
+  "name": "decode-bmp",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "LinusU/decode-bmp",
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
+  "dependencies": {
+    "to-data-view": "^1.0.0"
+  },
+  "devDependencies": {
+    "globby": "^8.0.1",
+    "lodepng": "^1.1.0",
+    "mocha": "^5.2.0",
+    "standard": "^11.0.1"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}
