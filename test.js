@@ -36,6 +36,7 @@ for (const testCase of testCases) {
       assert.strictEqual(actual.height, expected.height)
 
       assert.strictEqual(actual.data.length, expected.data.length, 'The decoded data should match the target data (length)')
+
       assert.ok(Buffer.compare(Buffer.from(actual.data), expected.data) === 0, 'The decoded data should match the target data (bytes)')
     })
   })

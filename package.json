@@ -4,16 +4,21 @@
   "license": "MIT",
   "repository": "LinusU/decode-bmp",
   "scripts": {
-    "test": "standard && mocha"
+    "test": "standard && mocha",
+    "build:wasm": "asc prelude.ts src/index.ts -b build/optimized.wasm --validate --optimize",
+    "build:js": "tsc -p src/tsconfig.json --outDir build",
+    "copy:loader": "cp node_modules/assemblyscript/lib/loader/index.js build/loader.js",
+    "prepare": "npm run build:wasm && npm run build:js && npm run copy:loader"
   },
   "files": [
     "index.d.ts",
-    "index.js"
+    "index.js",
+    "build/index.js",
+    "build/loader.js",
+    "build/optimized.wasm"
   ],
-  "dependencies": {
-    "to-data-view": "^1.0.0"
-  },
   "devDependencies": {
+    "assemblyscript": "github:AssemblyScript/assemblyscript#d5f72e3",
     "globby": "^8.0.1",
     "lodepng": "^1.1.0",
     "mocha": "^5.2.0",
