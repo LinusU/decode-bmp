@@ -11,6 +11,7 @@
     "index.js"
   ],
   "dependencies": {
+    "@canvas/image-data": "^1.0.0",
     "to-data-view": "^1.0.0"
   },
   "devDependencies": {

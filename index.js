@@ -1,4 +1,5 @@
 const toDataView = require('to-data-view')
+const ImageData = require('@canvas/image-data')
 
 function makeDivisibleByFour (input) {
   const rest = input % 4
@@ -75,7 +76,7 @@ function decodeTrueColorBmp (data, { width, height, colorDepth, icon }) {
     }
   }
 
-  return result
+  return new Uint8ClampedArray(result.buffer, result.byteOffset, result.byteLength)
 }
 
 function decodePaletteBmp (data, { width, height, colorDepth, colorCount, icon }) {
@@ -101,7 +102,7 @@ function decodePaletteBmp (data, { width, height, colorDepth, colorCount, icon }
     }
   }
 
-  return result
+  return new Uint8ClampedArray(result.buffer, result.byteOffset, result.byteLength)
 }
 
 function checkMagicBytes (bytes) {
@@ -145,5 +146,5 @@ module.exports = function decodeBmp (source, { width: iconWidth = 0, height: ico
     ? decodePaletteBmp(bitmapData, { width, height, colorDepth, colorCount, icon })
     : decodeTrueColorBmp(bitmapData, { width, height, colorDepth, icon })
 
-  return { width, height, data: result, colorDepth }
+  return Object.assign(new ImageData(result, width, height), { colorDepth })
 }

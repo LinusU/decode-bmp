@@ -1,9 +1,4 @@
-declare interface ImageData {
-  width: number
-  height: number
-  data: Uint8Array
-  colorDepth: number
-}
+import ImageData = require('@canvas/image-data')
 
 declare interface Options {
   width?: number
@@ -11,6 +6,6 @@ declare interface Options {
   icon?: boolean
 }
 
-declare function decodeBmp (source: ArrayBuffer | Uint8Array, options?: Options): ImageData
+declare function decodeBmp (source: ArrayBuffer | Uint8Array, options?: Options): ImageData & { colorDepth: number }
 
 export = decodeBmp

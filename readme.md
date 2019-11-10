@@ -18,7 +18,7 @@ const source = fs.readFileSync('foobar.bmp')
 const image = decodeBmp(source)
 
 console.log(image)
-//=> { width: 32, height: 32, data: Uint8Array(...), colorDepth: 32 }
+//=> { width: 32, height: 32, data: Uint8ClampedArray(...), colorDepth: 32 }
 ```
 
 ## API
@@ -31,5 +31,5 @@ The image has the following properties:
 
 - `width: number` - The width of the image, in pixels
 - `height: number` - The height of the image, in pixels
-- `data: Uint8Array` - The data of the image, in the `RGBA` format
+- `data: Uint8ClampedArray` - The data of the image, in the `RGBA` format
 - `colorDepth: number` - The color depth of the image as the number of bits used per pixel
