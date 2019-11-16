@@ -6,6 +6,6 @@ declare interface Options {
   icon?: boolean
 }
 
-declare function decodeBmp (source: ArrayBuffer | Uint8Array, options?: Options): ImageData & { colorDepth: number }
+declare function decodeBmp (source: ArrayBuffer | Int8Array | Uint8Array | Uint8ClampedArray, options?: Options): ImageData & { colorDepth: number }
 
 export = decodeBmp
