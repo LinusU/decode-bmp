@@ -14,7 +14,7 @@ class Bitmap {
     this.depth = colorDepth
     this.stride = makeDivisibleByFour(width * this.depth / 8)
     this.size = (this.stride * height)
-    this.data = data.slice(this.offset, this.offset + this.size)
+    this.data = data.subarray ? data.subarray(this.offset, this.offset + this.size) : data.slice(this.offset, this.offset + this.size)
 
     if (this.size !== this.data.byteLength) {
       throw new Error('Truncated bitmap data')
